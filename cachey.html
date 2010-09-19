@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <title>Cachey test</title>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="cachey.js" type="text/javascript" charset="utf-8"></script>
+        <script type="text/javascript" charset="utf-8">
+
+                // Testing Code
+                $(function() {
+					var lisToMake = 2500;
+					
+                    console.log($("#test").html());
+                    console.log($("#test").html()); // This selection will be cached
+                    
+					$('<button>')
+						.html('Select with jQuery()')
+						.click(function(){
+							var start = new Date();
+								
+							for (var i = 0; i < lisToMake; i++){
+								jQuery('.li' + i).css({background : 'red'});
+							}
+							
+							alert(new Date() - start)
+						})
+						.appendTo('body');
+						
+					$('<button>')
+						.html('Select with $()')
+						.click(function(){
+							var start = new Date();
+								
+							for (var i = 0; i < lisToMake; i++){
+								$('.li' + i).css({background : 'lime'});
+							}
+							
+							alert(new Date() - start)	
+						})
+						.appendTo('body');
+					
+					$('<button>', { value : 'arguments', name : 'work'})
+						.click(function(){
+							var ul, li, i;
+							
+							ul = $('<ul>').appendTo('body');
+							
+							for (i = 0; i < lisToMake; i++){
+								$('<li>', { class : 'li' + i})
+									.html(i.toString())
+									.appendTo('body ul')
+							}
+						})
+						.html('Make a big list!').appendTo('body')
+						
+							
+						
+                });
+				
+        </script>
+</head>
+<body>
+
+<div id="test">hello world</div>
+
+</body>
+</html>

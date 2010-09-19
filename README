@@ -1,0 +1,9 @@
+Cachey jQuery Plugin
+
+A collaboration between:
+
+Ross Davidson - draggor@gmail.com
+Jeremy Kahn - jeremyckahn@gmail.com
+Ben Mills - ben@bmdev.org
+
+To use, simply load this script after you load jQuery.  As elements are selected, they are cached.  When they are called again, the cached reference is called automatically, there is no DOM traversal.  Usage is completely transparent, just load this file and your apps will go faster.
